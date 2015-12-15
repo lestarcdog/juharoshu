@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+
+body {
+	text-align: center;
+	background-color: #C3C3C3;
+	margin: 0;
+}
+#container {
+	width: 990px;
+	text-align: left;
+	margin: auto;
+	background-color: #5BFB8F;
+	border-right-width: thin;
+	border-left-width: thin;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #336600;
+	border-left-color: #336600;
+	background-image: url(../myImages/surgerySymbo.png);
+	height: auto;
+	border-bottom-width: thick;
+	border-bottom-style: double;
+	border-bottom-color: #336600;
+}
+#container #menuside {
+	background-image: url(../images/menuBG.jpg);
+	height: 366px;
+	width: 221px;
+	background-repeat: no-repeat;
+	margin-top: 6px;
+	float: left;
+}
+#container #content {
+	margin-left: 230px;
+	width: 730px;
+	background-color: #A0FEBF;
+	border-right-width: thin;
+	border-left-width: thin;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #666666;
+	border-left-color: #666666;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	clear: right;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+#container #header {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+	clear: both;
+}
+#container #menuside #mainmenu ul {
+	text-align: left;
+	padding-left: 0px;
+	list-style-type: none;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 23px;
+	color: #CC0000;
+	line-height: 2em;
+	margin-left: 5px;
+}
+.menuStaticButton {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 23px;
+	font-weight: bold;
+	color: #990000;
+	text-decoration: none;
+	line-height: 2em;
+	margin-top: 0px;
+	margin-left: 5px;
+}
+#container #menuside #mainmenu {
+	padding: 10;
+	width: 190px;
+	text-align: left;
+	margin-top: 35px;
+}
+#container  #menuside  #submenu  ul {
+	text-align: left;
+	list-style-type: none;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px;
+	line-height: 1em;
+	margin-left: 20px;
+	padding: 0px;
+	margin-top: 0px;
+}
+.focim {
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	font-weight: bold;
+	color: #990000;
+	font-size: 40px;
+	line-height: 2em;
+	text-align: center;
+	letter-spacing: 5px;
+}
+.focimkep {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+h2 {
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #990000;
+}
+h1 {
+	font-size: 30px;
+	text-align: center;
+	font-weight: bold;
+	color: #CC0000;
+}
+p {
+	color: #000000;
+	line-height: 1.5em;
+	font-size: 18px;
+}
+.alahuzott {
+	font-size: 20px;
+	font-weight: bold;
+	color: #333333;
+	text-decoration: underline;
+}
+#footer {
+	margin-top: 20px;
+}
+#container #vissza {
+	margin-left: 230px;
+	width: 730px;
+	background-color: #A0FEBF;
+	border-right-width: thin;
+	border-left-width: thin;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #666666;
+	border-left-color: #666666;
+	clear: right;
+	margin-top: 0px;
+	padding: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: oblique;
+}
+.lofasz {
+	font-size: 24px;
+}
+.sadf {
+	font-size: 36px;
+}

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="dr. juharos ágota, mora terápia, móra terápia" >
+<meta name="description" content="Dr. Juharos ágota személyes honlapja">
+<title>Juharos</title>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="_js/modernizr-1.6.min.js" ></script>
+<script type="text/javascript" src="_js/jquery-1.4.4.min.js" ></script>
+<script type="text/javascript" src="_js/jquery-ui-1.8.7.custom.min.js" ></script>
+<script type="text/javascript" src="_js/fadein.js"></script>
+<script type="text/javascript">
+if(navigator.appName.indexOf("Explorer") == -1) {
+$(document).ready(function() {
+	var divs = $(".hidable");
+	var lis = $("#ultraNav li");
+	var pic = $("#extra img");
+	divs.hide().eq(0).fadeIn(500);
+	$("#ultraNav").delegate("li","click",function (e) {
+		var hash = $(this).find("a").attr("href");	
+		
+		lis.removeClass("selected");
+		$(this).addClass("selected");
+		divs.hide().filter(hash).fadeIn(500);
+		
+		var temp = new Image();
+		temp.src = "_images/html/"+hash.substring(1)+".jpg";
+		temp.onload = function () {
+			pic.attr("height",temp.height);
+			pic.attr("width",temp.width);
+			pic.attr("src","_images/html/"+hash.substring(1)+".jpg");
+			pic.hide().fadeIn(3000);
+		};
+		
+		e.preventDefault();
+	})
+});
+}
+
+</script>
+<link href="_css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<a name="top"></a>
+<div id="header">
+  <div class="wrapper"> <a href="index.html"><img src="_images/html/headerLogo.png" width="325" height="99" alt="juharos"></a>
+    <div id="topNav">
+      <ul>
+        <li><a href="oneletrajz.html">önéletrajz</a></li>
+        <li><a href="elerhetoseg.html">elérhetőség</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--HEADER-->
+
+<div id="wrapper">
+  <div id="leftSide">
+    <div id="head">
+      <h1><img src="_images/html/headers/ultrahang_08.png" width="143" height="60" alt="elerhetoseg"></h1>
+    </div>
+    <div id="extra"><img src="_images/html/ultrahang.jpg" width="150" height="110" alt="ultrahang"></div>
+    <div id="nav">
+      <ul>
+        <li><a href="ultrahang.html" class="selected">Ultrahang</a></li>
+        <li><a href="mora.html">MORA terápia</a></li>
+        <li><a href="mammografia.html">Mammográfia</a></li>
+        <li><a href="rontgen.html">Röntgen</a></li>
+        <li><a href="kutyaterapia.html">Kutyásterápia</a></li>
+        <li><a href="arak.html">Vizsgálati árak</a></li>
+        <li><a href="video.html">Videó</a></li>
+        <li><a href="ajanlott.html">Ajánlott oldalak</a></li>
+        <li><a href="letoltes.html">Ajánlott letöltések</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--LEFTSIDE-->
+  <div id="content">
+    <div id="ultraNav">
+      <ul>
+        <li id="ultraBtn" class="selected"><a href="#ultrahang">Ultrahang</a></li>
+        <li id="pajzsmirigyBtn" class="ketSor"><a href="#pajzsmirigy">Pajzsmirigy<br>
+          ultrahang</a></li>
+        <li id="hasiBtn"><a href="#hasi">Hasi ultrahang</a></li>
+        <li id="nyakiBtn" class="haromSor"><a href="#nyaki">Nyaki erek áramlás vizsgálata</a></li>
+        <li id="vegtagBtn" class="haromSor"><a href="#vegtag">Végtagi erek áramlás vizsgálata</a></li>
+      </ul>
+    </div>
+    <div id="ultrahang" class="hidable">
+      <h4> Ultrahang viszgálat </h4>
+      <p>A denevér már évmilliók óta tájékozódik az ultrahangok segítségével, az ember azonban csak a II. világháborúban kezdte használni ugyanerre a célra. Először katonai célokra alkalmazták. Orvosi alkalmazására az 1950-es évek elején került sor. A szervek, szövetek hangvisszaverő képességük alapján jeleníthetők meg és különíthetők el egymástól.</p>
+      <p>Előnye: </p>
+      <ul>
+        <li> Fájdalmatlan, </li>
+        <li> nem terheli m eg a beteget, </li>
+        <li> káros hatása nem ismert,</li>
+        <li> korlátlan számban ismételhető, így panaszmentesen, rendszeres szűrővizsgálatként is alkalmazható,</li>
+        <li> egyes szervek elváltozásainak korai felismerésére alkalmas,</li>
+        <li> bizonyos szervekben már 2-3mm-es elváltozások is felismerhetők.</li>
+      </ul>
+      <p>Hátránya:</p>
+      <ul>
+        <li> A gyomor és bélrendszer vizsgálatára nem alkalmas.</li>
+        <li> A hasi szervek vizsgálatát a bélgázosság zavarja, ezért a vizsgálat előtt legalább 6 órával nem szabad enni vagy inni, és rágógumizni sem!</li>
+        <li> Éhgyomri vizsgálatnál is előfordulhat, hogy egyes szervek alkati okok miatt nehezebben ábrázolhatók, ez leggyakrabban a hasnyálmirigy esetében fordul elő. </li>
+        <li> A túlsúlyos betegeknél általában nehezebben ábrázolhatók a szervek.</li>
+        <li> A kismedencében lévő szervek<br>
+          (húgyhólyag, nőknél méh, petefészek, férfiaknál prostata ) további pontos megítélésre szükség lehet nőgyógyászati ill. urológiai szakvizsgálatra is.</li>
+      </ul>
+      <p><a href="#top">Vissza a tetejére</a></p>
+    </div>
+    <div id="hasi" class="hidable">
+      <h4>Mire jó, mely szervek vizsgálatára és milyen betegségek, elváltozások kimutatására alkalmas a Hasi ultrahang vizsgálat?</h4>
+      <table width="80%" border="3">
+        <tr>
+          <th>HASI SZERVEK</th>
+          <th>ELVÁLTOZÁSOK, BETEGSÉGEK</th>
+        </tr>
+        <tr>
+          <td>MÁJ </td>
+          <td>Nagyság, szerkezet, az egész májat érintő elváltozások, pl. elzsírosodás, gócos, jóindulatú elváltozások, pl. cysták, daganatok, baleseti sérülés stb.</td>
+        </tr>
+        <tr>
+          <td>EPEHÓLYAG, EPEUTAK </td>
+          <td>Kövesség, gyulladás, polipusok, daganat, epeutak tágassága</td>
+        </tr>
+        <tr>
+          <td>HASNYÁLMIRIGY </td>
+          <td>Gyulladás, jóindulatú elváltozások, pl. cysták, daganatok</td>
+        </tr>
+        <tr>
+          <td>VESÉK </td>
+          <td>Veleszületett rendellenességek és azok követése csecsemőknél, kisgyermekeknél, kövesség és következményei, gyulladás, alaki és elhelyezkedésbeli eltérések, jó- és rosszindulatú daganatok, vese-erek áramlásvizsgálata magas vérnyomás okának kiderítésére</td>
+        </tr>
+        <tr>
+          <td>LÉP </td>
+          <td>Nagyság, gócos elváltozások, baleseti sérülés, más betegségekhez társuló elváltozások, pl. vérképzőszervi betegségeknél</td>
+        </tr>
+        <tr>
+          <td>MÉH, PETEFÉSZEK</td>
+          <td>(tájékozódó vizsgálat, pontos megítélésére nőgyógyászati UH szükséges) <br>
+            Nagyság, körülirt elváltozások, myoma, terhesség, gyulladás, cysták, daganatok</td>
+        </tr>
+        <tr>
+          <td>PROSTATA</td>
+          <td>(tájékozódó vizsgálat, megítélésére urológiai vizsgálat javasolt) <br>
+            Nagyság, szerkezet</td>
+        </tr>
+      </table>
+      <h4>Kinek ajánlott és kinek szükséges a Hasi Ultrahang vizsgálat?</h4>
+      <p>Ajánlott minden 35 év feletti panaszmentes embernek évente 1 alkalommal, un. szűrővizsgálatként megelőzés céljából, esetleges még tünetmentes elváltozás kimutatására.</p>
+      <p>Szükséges életkortól függetlenül azoknak, akiknek un. &quot;hasi&quot; panaszai vannak, mint pl.:</p>
+      <ul>
+        <li> puffadás, </li>
+        <li> étkezéssel összefüggő vagy attól független hasi, deréktáji fájdalmak, görcsök, </li>
+        <li> étvágytalanság, </li>
+        <li> indokolatlan fogyás, stb.</li>
+      </ul>
+      <p>Természetesen minden betegnek, aki egyéb betegség miatt áll gondozás alatt, és kezelőorvosa, háziorvosa szükségesnek tartja.</p>
+      <p><a href="#top">Vissza a tetejére</a></p>
+    </div>
+    <div id="pajzsmirigy" class="hidable">
+      <h4>Mire jó a Pajzsmirigy Ultrahang vizsgálat?</h4>
+      <p>A pajzsmirigy a nyak középvonalában elhelyezkedő, 2-4cm nagyságú, keskeny &quot;híddal&quot; összekötött két lebenyből álló mirigyes szerv. Normál esetben homogén szerkezetű. </p>
+      <p>Előfordulhatnak azonban benne különböző göbök, cysták, melyek az egész szerv megnagyobbodását is okozhatják. </p>
+      <p>A pajzsmirigy nagysága, az esetleges göbök mérete, megjelenése jól megítélhető az ultrahang vizsgálattal.</p>
+      <h4>Kinek ajánlott és kinek szükséges a Pajzsmirigy Ultrahang vizsgálat?</h4>
+      <p>Ajánlott minden 35 év feletti panaszmentes embernek un. szűrővizsgálatként megelőzés céljából, esetleges még tünetmentes elváltozás kimutatására.</p>
+      <p>Szükséges életkortól függetlenül azoknak, akik</p>
+      <ul>
+        <li> a nyakuk körfogatának növekedését észlelik,</li>
+        <li> &quot;csomót&quot; tapintanak a nyakon, melyet korábban nem észleltek, </li>
+        <li> a nyakon gombóc v. szorító érzést éreznek,</li>
+        <li> nyelési panaszai vannak,</li>
+        <li> indokolatlan fogyás, vagy éppen hízás esetén,</li>
+      </ul>
+      <p>természetesen minden betegnek, akinek egyéb panaszai miatt kezelőorvosa, háziorvosa szükségesnek tartja.</p>
+      <p><a href="#top">Vissza a tetejére</a></p>
+    </div>
+    <div id="nyaki" class="hidable">
+      <h4>Mire jó a nyaki erek áramlásvizsgálata?
+        (Carotis Color Doppler UH)</h4>
+      <p>A nyak két oldalán fut a nyaki fő ütőér, amely biztosítja az agy vérellátását.</p>
+      <p>Ezeknek az ereknek a szűkülete, súlyosabb esetben elzáródása jöhet létre, ha az érfal elmeszesedik, és így agyi keringési zavarok oka lehet. </p>
+      <p>A vizsgálat során ábrázolni tudjuk az érfalon a meszes felrakódásokat, ill. mérni tudjuk az érben áramló vér sebességét, amely utal az esetleges érszűkület mértékére.</p>
+      <h4>Kinek ajánlott és kinek szükséges a nyaki erek ultrahangos áramlás vizsgálata?
+        (Carotis color Doppler UH)</h4>
+      <p>Ajánlott minden 35 év feletti panaszmentes embernek évente 1 alkalommal,<br>
+        un. szűrővizsgálatként megelőzés céljából, aki </p>
+      <ul>
+        <li> dohányzik,</li>
+        <li> túlsúlyos,</li>
+        <li> családjában érszűkület, szívinfarktus, stroke ( agyvérzés, agyi keringési zavar stb.) fordult elő,</li>
+        <li> magas vérnyomás betegségben szenved.</li>
+      </ul>
+      <p>Szükséges azoknak, akiknek szédüléses, fejfájásos stb. panaszai miatt kezelőorvosa javasolta.</p>
+      <p><a href="#top">Vissza a tetejére</a></p>
+    </div>
+    <div id="vegtag" class="hidable">
+      <h4>Mire jó a végtagi erek áramlásvizsgálata?
+        ( Color Doppler UH)</h4>
+      <p>Az alsó végtagon futó vénák - amelyek a szív felé szállítják az un. &quot;elhasznált&quot; vért- ábrázolására alkalmas vizsgáló eljárás. A mélyen futó fő vénás rendszert vizsgáljuk, elsősorban az erek átjárhatóságát, a bennük lévő véráramlás folyamatosságát. Kóros esetben az érpályán belül véralvadék, trombus keletkezhet, amely akadályozza a véráramlást, ezért a láb megdagad, feszül, fájdalmas. Ez a trombózis betegség. A Doppleres áramlásvizsgálattal felismerhető, hogy az áramlási zavar csak részleges vagy teljes, pontosan ábrázolható az elzáródás helye, ill. nyomon követhető a gyógyulás menete is. </p>
+      <p>A kórosan kitágult un. felületes vénák, közismerten &quot;visszeres tágulatok&quot; szabad szemmel és tapintással is jól láthatóak, érezhetőek, gyulladásukat, elzáródásukat az ultrahang vizsgálat eredménye megerősítheti. </p>
+      <p>Sokkal ritkábban, általában más betegséghez társulóan a felső végtagon is előfordulhatnak hasonló betegségek.</p>
+      <h4>Kinek ajánlott és kinek szükséges a végtagi erek ultrahangos áramlás vizsgálata?</h4>
+      <p>Forduljon háziorvosához ill. kezelőorvosához, ha </p>
+      <ul>
+        <li> egyik lába dagadtabb, mint a másik, </li>
+        <li> fájdalmat érez járáskor a vádlijában, vagy az egész végtagon, </li>
+        <li> feszül, nehéz a lába, </li>
+        <li> kitágultak a látható felületes visszerek. </li>
+      </ul>
+      <p>Különösen fontos hogy orvosához forduljon, ha a fenti tünetek jelentkezése előtt</p>
+      <ul>
+        <li> valamilyen hasi, kismedencei műtéten esett át, </li>
+        <li> nem régen szült, </li>
+        <li> hosszabb repülőúton vagy főként nyári melegben hosszabb autós, motoros vagy buszos utazáson vett részt, </li>
+        <li> az Ön számára szokatlanul megerőltető fizikai terhelés érte, pl. gyalogtúra, egyéb sporttevékenység, kerékpározás stb. </li>
+      </ul>
+      <p>Kezelőorvosa fogja előírni a trombózis betegség kizárására a végtagi ultrahangos Doppler áramlás vizsgálatot.</p>
+      <p><a href="#top">Vissza a tetejére</a></p>
+    </div>
+  </div>
+  <!--CONTENT-->
+  <div id="footer">Dr. Juharos Ágota | 2011 </div>
+</div>
+<p>&nbsp;</p>
+<!--WRAPPER-->
+</body>
+</html>
