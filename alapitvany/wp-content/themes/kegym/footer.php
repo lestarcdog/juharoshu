@@ -28,7 +28,7 @@
 
 
 <!-- pop up hun -->
-<?php if (is_front_page() && get_bloginfo('language') == "hu") { ?>
+<?php if (is_front_page() && get_bloginfo('language') == "hu-HU") { ?>
   <div id="popup_onepercent_background"></div> 
   <div id="popup_content"> 
  

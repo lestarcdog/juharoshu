@@ -119,12 +119,12 @@ function twentytwelve_scripts_styles() {
 	global $wp_styles;
 	
 	/* Add Jquery */
-	wp_enqueue_script("jquery",'//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
+	wp_enqueue_script("jquery");
 
 	/* Lightbox image gallery */
-	wp_enqueue_script("lightbox-js",get_template_directory_uri() . '/js/jquery.fancybox-1.3.4.pack.js');
-	wp_enqueue_script("lightbox-init",get_template_directory_uri() . '/js/init-lightbox.js');
-	wp_enqueue_style( 'lightbox-css', get_template_directory_uri() . '/css/jquery.fancybox-1.3.4.css' );
+	// wp_enqueue_script("lightbox-js",get_template_directory_uri() . '/js/jquery.fancybox-1.3.4.pack.js');
+	// wp_enqueue_script("lightbox-init",get_template_directory_uri() . '/js/init-lightbox.js');
+	// wp_enqueue_style( 'lightbox-css', get_template_directory_uri() . '/css/jquery.fancybox-1.3.4.css' );
 
 	/*
 	 * Adds JavaScript to pages with the comment form to support
@@ -253,30 +253,6 @@ function twentytwelve_widgets_init() {
 		'before_title' => '',
 		'after_title' => ''
 	) );
-	
-	
-	/*
-	register_sidebar( array(
-		'name' => __( 'First Front Page Widget Area', 'twentytwelve' ),
-		'id' => 'sidebar-2',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name' => __( 'Second Front Page Widget Area', 'twentytwelve' ),
-		'id' => 'sidebar-3',
-		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'twentytwelve' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => '</aside>',
-		'before_title' => '<h3 class="widget-title">',
-		'after_title' => '</h3>',
-	) );
-	
-	*/
 }
 add_action( 'widgets_init', 'twentytwelve_widgets_init' );
 

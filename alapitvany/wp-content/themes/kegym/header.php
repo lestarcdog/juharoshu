@@ -61,7 +61,7 @@
 			<a href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/_images/alapitvany_logo.png"  alt="kutyavalegymosolyert" width="100" height="98"></a>
 			<a href="<?php echo home_url(); ?>">
 <div id="alapitvanyNev">
-<?php if(get_bloginfo('language') == "hu") { ?>
+<?php if(get_bloginfo('language') == "hu-HU") { ?>
 KUTYÁVAL EGY <b>MOSOLYÉRT</b> ALAPÍTVÁNY 
 <?php } else {  ?>
 WITH DOGS FOR A <b>SMILE</b> FOUNDATION
