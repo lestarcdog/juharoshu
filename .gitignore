@@ -34,3 +34,5 @@
 
 # htaccess
 */.htaccess
+
+*/page-templates/poskey.php
