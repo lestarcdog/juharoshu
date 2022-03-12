@@ -129,6 +129,9 @@ get_header();
         </br>
         <input type="submit" />
     </form>
+    <div id="barion-banner">
+        <img src="<?php echo get_template_directory_uri() . '/_images/barion.png'  ?>" alt="barion_banner" />
+    </div>
     <?php if($showPaymentOk) { ?>
     <div>
         <p>Sikeres fizetés. Köszönjük.</p>
@@ -190,6 +193,11 @@ get_header();
 
 #donation-form input[type=submit]:hover {
     background-color: #45a049;
+}
+
+#barion-banner {
+    display: flex;
+    justify-content: center;
 }
 </style>
 
