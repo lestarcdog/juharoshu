@@ -20,6 +20,7 @@ $environment = BarionEnvironment::Test;
 $useCert = $environment == BarionEnvironment::Test;
 $posKey = $environment == BarionEnvironment::Test ? $testPosKey : $prodPosKey;
 $payee = $environment == BarionEnvironment::Test ? $testPayee : $prodPayee;
+$pixelId = $environment == BarionEnvironment::Test ? $testPixelId : $prodPixelId;
 $BC = new BarionClient($posKey, 2, $environment, $useCert);
 
 $hasPaymentError = false;
@@ -121,6 +122,9 @@ get_header();
         <label for="email">Email</label>
         <input id="email" type="email" name="email" placeholder="kutya@kema.hu" value="valami@test.ru">
 
+        <input type="checkbox" id="aszf" required />
+        <label for="aszf">A <a href="https://www.barion.com/hu/files/barion-pixel-aszf.pdf">Barion ÁSZF</a>-t megértettem és elfogadom.</label>
+
         <input type="hidden" name="donate" value="yes" />
         </br>
         <input type="submit" />
@@ -137,6 +141,29 @@ get_header();
     <?php } ?>
 </div>
 <div><?php the_content(); ?></div>
+
+<script>
+    // Create BP element on the window
+    window["bp"] = window["bp"] || function () {
+    (window["bp"].q = window["bp"].q || []).push(arguments);
+    };
+    window["bp"].l = 1 * new Date();
+    
+    // Insert a script tag on the top of the head to load bp.js
+    scriptElement = document.createElement("script");
+    firstScript = document.getElementsByTagName("script")[0];
+    scriptElement.async = true;
+    scriptElement.src = 'https://pixel.barion.com/bp.js';
+    firstScript.parentNode.insertBefore(scriptElement, firstScript);
+    window['barion_pixel_id'] = <?php echo $pixelId ?>;            
+
+    // Send init event
+    bp('init', 'addBarionPixelId', window['barion_pixel_id']);
+</script>
+
+<noscript>
+    <img height="1" width="1" style="display:none" alt="Barion Pixel" src="https://pixel.barion.com/a.gif?ba_pixel_id='<?php echo $pixelId ?>'&ev=contentView&noscript=1">
+</noscript>
 
 <style>
 #donation-form input[type=text],
