@@ -196,6 +196,10 @@ body {
 	color: white;
 }
 
+#header #donate:hover {
+	background-color: #e9314c;
+}
+
 #header #lang-sidebar ul li {
 	float:left;
 	margin: 0 5px;
