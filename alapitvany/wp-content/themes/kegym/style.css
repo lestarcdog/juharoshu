@@ -177,6 +177,25 @@ body {
 	top: 60px;
 }
 
+#header #donate {
+	position: absolute;
+	width: 135px;
+	height: 25px;
+	background-color: #e31938;
+	border-radius: 7px;
+	border-color: white 2px solid;
+	right: 450px;
+	top: 60px;
+	text-align: center;
+	box-shadow: 0px 4px 8px -2px rgba(0, 0, 0, 0.25);
+}
+
+#header #donate a {
+	line-height: 25px;
+	text-decoration: none;
+	color: white;
+}
+
 #header #lang-sidebar ul li {
 	float:left;
 	margin: 0 5px;

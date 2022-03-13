@@ -3,8 +3,8 @@
 Template Name: Donation Page
 */
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . join(DIRECTORY_SEPARATOR, array('..' , 'barionlib' , 'BarionClient.php'));
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR .'poskey.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . join(DIRECTORY_SEPARATOR, array('..', 'barionlib', 'BarionClient.php'));
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'poskey.php';
 
 // we should always have a post here
 the_post();
@@ -16,7 +16,7 @@ $environment = BarionEnvironment::Test;
 // $environment = BarionEnvironment::Prod;
 
 // Returned URL http://127.0.0.1/edsa-kema/?page_id=7423&paymentId=a3247cd7ff9dec118bde001dd8b71cc4
-        
+
 $useCert = $environment == BarionEnvironment::Test;
 $posKey = $environment == BarionEnvironment::Test ? $testPosKey : $prodPosKey;
 $payee = $environment == BarionEnvironment::Test ? $testPayee : $prodPayee;
@@ -28,14 +28,14 @@ $showPaymentOk = false;
 
 $queryParams = array();
 parse_str($_SERVER['QUERY_STRING'], $queryParams);
-if(isset($queryParams['paymentId']) && $queryParams['paymentId'] !== '') {
+if (isset($queryParams['paymentId']) && $queryParams['paymentId'] !== '') {
     // We only process the redirect URL and not the callback URL.
     // Redirect URL only called when payment is in a final state.
 
     // https://docs.barion.com/Payment-GetPaymentState-v2
     $response = $BC->GetPaymentState($queryParams['paymentId']);
     //print_r($response);
-    if($response->Status == PaymentStatus::Succeeded || $response->Status == PaymentStatus::PartiallySucceeded) {
+    if ($response->Status == PaymentStatus::Succeeded || $response->Status == PaymentStatus::PartiallySucceeded) {
         $showPaymentOk = true;
     } else {
         $hasPaymentError = true;
@@ -44,7 +44,7 @@ if(isset($queryParams['paymentId']) && $queryParams['paymentId'] !== '') {
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST["donate"])) {
+    if (isset($_POST["donate"])) {
         $amount = intval($_POST["amount"]);
         $callbackUrl = get_permalink();
         $email = htmlspecialchars($_POST["email"]);
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $payment = $BC->PreparePayment($ppr);
         //print_r($payment);
 
-        if(isset($payment->PaymentRedirectUrl) && $payment->PaymentRedirectUrl !== '') {
+        if (isset($payment->PaymentRedirectUrl) && $payment->PaymentRedirectUrl !== '') {
             nocache_headers();
             wp_redirect($payment->PaymentRedirectUrl, 302, 'KEMA');
             exit;
@@ -101,26 +101,38 @@ get_header();
 
 ?>
 <h2><?php the_title(); ?></h2>
+<?php if ($showPaymentOk) { ?>
+        <div>
+            <p>Sikeres fizetés. Köszönjük.</p>
+        </div>
+    <?php } ?>
+    <?php if ($hasPaymentError) { ?>
+        <div>
+            <p style="color: red">Hiba történt a fizetés során</p>
+        </div>
+    <?php } ?>
 <div id="donation-form">
     <form method="post" action="<?php echo get_permalink(); ?>">
-        <div>
-            <?php foreach(array(2000, 3000, 5000) as $amount) {?>
-            <button type="button">
-                <input class="d-none" type="radio" name="amount" value="<?php echo $amount ?>" required />
-                <?php echo $amount ?> Ft
-            </button>
+        <div id="amount">
+            <?php foreach (array(2000, 3000, 5000) as $amount) { ?>
+                <input class="amount-input" type="radio" name="amount" id="<?php echo $amount ?>_huf" value="<?php echo $amount ?>" required />
+                <label class="amount-label" for="<?php echo $amount ?>_huf"><?php echo $amount ?> Ft</label>
             <?php } ?>
         </div>
 
-
-        <label for="firstname">Vezetéknév</label>
-        <input id="firstname" type="text" name="firstname" placeholder="Kiss" value="Kiss">
-
-        <label for="lastname">Keresztnév</label>
-        <input id="lastname" type="text" name="lastname" placeholder="János" value="Janos">
+        <div id="name">
+            <div>
+                <label for="firstname">Vezetéknév</label><br />
+                <input id="firstname" type="text" name="firstname" placeholder="Kiss" required>
+            </div>
+            <div>
+                <label for="lastname">Keresztnév</label><br />
+                <input id="lastname" type="text" name="lastname" placeholder="János" required>
+            </div>
+        </div>
 
         <label for="email">Email</label>
-        <input id="email" type="email" name="email" placeholder="kutya@kema.hu" value="valami@test.ru">
+        <input id="email" type="email" name="email" placeholder="kutya@kema.hu" required>
 
         <input type="checkbox" id="aszf" required />
         <label for="aszf">A <a href="https://www.barion.com/hu/files/barion-pixel-aszf.pdf">Barion ÁSZF</a>-t megértettem és elfogadom.</label>
@@ -132,33 +144,23 @@ get_header();
     <div id="barion-banner">
         <img src="<?php echo get_template_directory_uri() . '/_images/barion.png'  ?>" alt="barion_banner" />
     </div>
-    <?php if($showPaymentOk) { ?>
-    <div>
-        <p>Sikeres fizetés. Köszönjük.</p>
-    </div>
-    <?php } ?>
-    <?php if($hasPaymentError) { ?>
-    <div>
-        <p>Hiba történt a fizetés során</p>
-    </div>
-    <?php } ?>
 </div>
 <div><?php the_content(); ?></div>
 
 <script>
     // Create BP element on the window
-    window["bp"] = window["bp"] || function () {
-    (window["bp"].q = window["bp"].q || []).push(arguments);
+    window["bp"] = window["bp"] || function() {
+        (window["bp"].q = window["bp"].q || []).push(arguments);
     };
     window["bp"].l = 1 * new Date();
-    
+
     // Insert a script tag on the top of the head to load bp.js
     scriptElement = document.createElement("script");
     firstScript = document.getElementsByTagName("script")[0];
     scriptElement.async = true;
     scriptElement.src = 'https://pixel.barion.com/bp.js';
     firstScript.parentNode.insertBefore(scriptElement, firstScript);
-    window['barion_pixel_id'] = <?php echo $pixelId ?>;            
+    window['barion_pixel_id'] = <?php echo $pixelId ?>;
 
     // Send init event
     bp('init', 'addBarionPixelId', window['barion_pixel_id']);
@@ -169,36 +171,97 @@ get_header();
 </noscript>
 
 <style>
-#donation-form input[type=text],
-#donation-form input[type=email] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    #donation-form input[type=text],
+    #donation-form input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-#donation-form input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    #donation-form #name {
+        margin-top: 10px;
+    }
 
-#donation-form input[type=submit]:hover {
-    background-color: #45a049;
-}
+    #donation-form #name div {
+        width: 45%;
+        display: inline-block;
+    }
 
-#barion-banner {
-    display: flex;
-    justify-content: center;
-}
+    #donation-form input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #donation-form input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    #barion-banner {
+        display: flex;
+        justify-content: center;
+    }
+
+    input[type=radio] {
+        display: none;
+    }
+
+    input[type=radio]:not(:disabled)~label {
+        cursor: pointer;
+    }
+
+    #amount {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .amount-label {
+        height: 100%;
+        display: block;
+        background: white;
+        border: 2px solid #20df80;
+        border-radius: 20px;
+        padding: 1rem 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        margin: 0 15px;
+        box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
+        position: relative;
+    }
+
+    input[type=radio]:checked+label {
+        background: #e31938;
+        color: white;
+        box-shadow: 0px 0px 20px rgba(0, 255, 128, 0.75);
+    }
+
+    input[type=radio]:checked+label::after {
+        color: #3d3f43;
+        border: 2px solid #e31938;
+        content: "🐕";
+        font-size: 20px;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
+    }
 </style>
 
 <?php get_footer(); ?>
