@@ -114,7 +114,7 @@ get_header();
 <div id="donation-form">
     <form method="post" action="<?php echo get_permalink(); ?>">
         <div id="amount">
-            <?php foreach (array(2000, 3000, 5000) as $amount) { ?>
+            <?php foreach (array(1000, 3000, 5000, 10000) as $amount) { ?>
                 <input class="amount-input" type="radio" name="amount" id="<?php echo $amount ?>_huf" value="<?php echo $amount ?>" required />
                 <label class="amount-label" for="<?php echo $amount ?>_huf"><?php echo $amount ?> Ft</label>
             <?php } ?>
@@ -135,7 +135,9 @@ get_header();
         <input id="email" type="email" name="email" placeholder="kutya@kema.hu" required>
 
         <input type="checkbox" id="aszf" required />
-        <label for="aszf">A <a href="https://www.barion.com/hu/files/barion-pixel-aszf.pdf">Barion ÁSZF</a>-t megértettem és elfogadom.</label>
+        <label for="aszf">Az <a href="https://juharos.hu/alapitvany/?page_id=7346">adományozási feltételeket</a> és a 
+            <a href="https://juharos.hu/alapitvany/?page_id=6587">adatvédelmi nyilatkozatot</a>
+            megértettem és elfogadom.</label>
 
         <input type="hidden" name="donate" value="yes" />
         </br>
@@ -223,6 +225,7 @@ get_header();
         display: flex;
         flex-direction: row;
         justify-content: center;
+        margin-top: 15px;
     }
 
     .amount-label {
