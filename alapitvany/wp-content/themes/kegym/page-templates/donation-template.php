@@ -9,7 +9,7 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'poskey.php';
 // we should always have a post here
 the_post();
 
-$isEnLang = strpos(get_bloginfo('language'), "hu") !== false;
+$isEnLang = strpos(get_bloginfo('language'), "hu") === false;
 
 
 // Test environment
@@ -105,12 +105,14 @@ get_header();
 <h2><?php the_title(); ?></h2>
 <?php if ($showPaymentOk) { ?>
 <div>
-    <p>Sikeres fizetés. Köszönjük.</p>
+    <p><?php echo $isEnLang ? 'Successful payment. Thank you.' : 'Sikeres fizetés. Köszönjük.' ?></p>
 </div>
 <?php } ?>
 <?php if ($hasPaymentError) { ?>
 <div>
-    <p style="color: red">Hiba történt a fizetés során</p>
+    <p style="color: red">
+        <?php echo $isEnLang ? 'An error has happened during payment processing!' : 'Hiba történt a fizetés során!' ?>
+    </p>
 </div>
 <?php } ?>
 <div id="donation-form">
@@ -122,7 +124,8 @@ get_header();
             <label class="amount-label" for="<?php echo $amount ?>_huf"><?php echo $amount ?> Ft</label>
             <?php } ?>
             <input class="amount-input" type="radio" name="amount" id="custom_huf" value="-1" required />
-            <label class="amount-label" for="custom_huf">Egyéb összeg</label>
+            <label class="amount-label"
+                for="custom_huf"><?php echo $isEnLang ? 'Other amount' : 'Egyéb összeg' ?></label>
         </div>
 
         <div id="custom_input">
@@ -131,11 +134,11 @@ get_header();
 
         <div id="name">
             <div>
-                <label for="firstname">Vezetéknév</label><br />
+                <label for="firstname"><?php echo $isEnLang ? 'Family name' : 'Vezetéknév' ?></label><br />
                 <input id="firstname" type="text" name="firstname" placeholder="" required>
             </div>
             <div>
-                <label for="lastname">Keresztnév</label><br />
+                <label for="lastname"><?php echo $isEnLang ? 'First name' : 'Keresztnév' ?></label><br />
                 <input id="lastname" type="text" name="lastname" placeholder="" required>
             </div>
         </div>
@@ -144,10 +147,15 @@ get_header();
         <input id="email" type="email" name="email" placeholder="email@cim.hu" required>
 
         <input type="checkbox" id="aszf" required />
-        <label for="aszf">Az <a href="https://juharos.hu/alapitvany/?page_id=7346">adományozási feltételeket</a> és a
-            <a href="https://juharos.hu/alapitvany/?page_id=6587">adatvédelmi nyilatkozatot</a>
-            megértettem és elfogadom.</label>
-
+        <label for="aszf">
+            <?php if ($isEnLang) { ?>
+            I've read and understand the <a href="https://juharos.hu/alapitvany/?page_id=7346">donation requirements</a>
+            and the <a href="https://juharos.hu/alapitvany/?page_id=6587">privacy policy</a>.</label>
+        <?php } else { ?>
+        Az <a href="https://juharos.hu/alapitvany/?page_id=7346">adományozási feltételeket</a> és a
+        <a href="https://juharos.hu/alapitvany/?page_id=6587">adatvédelmi nyilatkozatot</a>
+        megértettem és elfogadom.</label>
+        <?php } ?>
         <input type="hidden" name="donate" value="yes" />
         </br>
         <input type="submit" />
