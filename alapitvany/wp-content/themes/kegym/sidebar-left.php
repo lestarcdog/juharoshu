@@ -48,13 +48,6 @@
                 height="50" alt="juharos.hu"></div>
         <div class="caption"><a href="http://juharos.hu/" target="_blank">www.juharos.hu</a></div>
     </div>
-
-    <div class="tamogato">
-        <div class="image"><img src="<?php echo get_template_directory_uri(); ?>/_images/banner/kisfai.jpg" width="126"
-                height="90"></div>
-        <div class="caption"><a href="http://csikaimagyarorszag.hu/" target="_blank">Kisfái kutyakiképző egyesület</a>
-        </div>
-    </div>
 </div>
 
 <div id="images">
