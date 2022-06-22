@@ -73,9 +73,16 @@
             <div id="wrapper">
                 <div id="alapitvanynev_wrapper">
                     <a href="<?php echo home_url(); ?>"><img
+                            id="alapitvany-logo"
                             src="<?php echo get_template_directory_uri(); ?>/_images/alapitvany_logo.png"
                             alt="kutyavalegymosolyert" width="100" height="98"></a>
                     <a href="<?php echo home_url(); ?>">
+                    <div id="adi-member">
+                        <a href="https://assistancedogsinternational.org/">
+                            <img src="<?php echo get_template_directory_uri(); ?>/_images/adi_logo.png"
+                                alt="adi logo" />
+                        </a>
+                    </div>
                         <div id="alapitvanyNev">
                             <?php if (strpos(get_bloginfo('language'), "hu") !== false) { ?>
                             KUTYÁVAL EGY <b>MOSOLYÉRT</b> ALAPÍTVÁNY
@@ -92,13 +99,6 @@
 
                     <div id="lang-sidebar">
                         <?php dynamic_sidebar('sidebar-lang'); ?>
-                    </div>
-
-                    <div id="adi-member">
-                        <a href="https://assistancedogsinternational.org/">
-                            <img src="<?php echo get_template_directory_uri(); ?>/_images/adi_logo.jpg"
-                                alt="adi logo" />
-                        </a>
                     </div>
 
                     <div id="search-bar"><?php get_search_form(); ?> </div>

@@ -257,7 +257,7 @@ body {
   position: relative;
 }
 
-#header #alapitvanynev_wrapper img {
+#header #alapitvanynev_wrapper #alapitvany-logo {
   position: absolute;
   left: 0;
   top: 0;
@@ -266,7 +266,7 @@ body {
 #header #alapitvanyNev {
   position: absolute;
   top: 30px;
-  left: 175px;
+  left: 250px;
   font-size: 20px;
   color: white;
   letter-spacing: 0.5px;
@@ -303,13 +303,13 @@ body {
 
 #header #adi-member {
   position: absolute;
-  top: 60px;
-  left: 200px;
+  top: 2px;
+  left: 110px;
 }
 
 #header #adi-member img {
-  height: 30px;
-  width: auto;
+  height: 93px;
+  width: 100px;
 }
 
 #header #lang-sidebar ul li {
