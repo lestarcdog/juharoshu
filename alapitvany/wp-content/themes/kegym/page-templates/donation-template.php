@@ -56,8 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // https://docs.barion.com/Payment-Start-v2
         $item = new ItemModel();
-        $item->Name = "Adomány";
-        $item->Description = "KEMA adomány";
+        $item->Name = get_post_meta(get_the_ID(), 'kutya', true) . " Adomány";
+        $item->Description = get_post_meta(get_the_ID(), 'kutya', true) . " adomány";
         $item->Quantity = 1;
         $item->Unit = "db";
         $item->UnitPrice = $amount;
@@ -104,28 +104,27 @@ get_header();
 ?>
 <h2><?php the_title(); ?></h2>
 <?php if ($showPaymentOk) { ?>
-<div>
-    <p><?php echo $isEnLang ? 'Successful payment. Thank you.' : 'Sikeres fizetés. Köszönjük.' ?></p>
-</div>
+    <div>
+        <p><?php echo $isEnLang ? 'Successful payment. Thank you.' : 'Sikeres fizetés. Köszönjük.' ?></p>
+    </div>
 <?php } ?>
 <?php if ($hasPaymentError) { ?>
-<div>
-    <p style="color: red">
-        <?php echo $isEnLang ? 'An error has happened during payment processing!' : 'Hiba történt a fizetés során!' ?>
-    </p>
-</div>
+    <div>
+        <p style="color: red">
+            <?php echo $isEnLang ? 'An error has happened during payment processing!' : 'Hiba történt a fizetés során!' ?>
+        </p>
+    </div>
 <?php } ?>
+<div><?php the_content(); ?></div>
 <div id="donation-form">
     <form method="post" action="<?php echo get_permalink(); ?>">
         <div id="amount">
             <?php foreach (array(1000, 3000, 5000, 10000) as $amount) { ?>
-            <input class="amount-input" type="radio" name="amount" id="<?php echo $amount ?>_huf"
-                value="<?php echo $amount ?>" required />
-            <label class="amount-label" for="<?php echo $amount ?>_huf"><?php echo $amount ?> Ft</label>
+                <input class="amount-input" type="radio" name="amount" id="<?php echo $amount ?>_huf" value="<?php echo $amount ?>" required />
+                <label class="amount-label" for="<?php echo $amount ?>_huf"><?php echo $amount ?> Ft</label>
             <?php } ?>
             <input class="amount-input" type="radio" name="amount" id="custom_huf" value="-1" required />
-            <label class="amount-label"
-                for="custom_huf"><?php echo $isEnLang ? 'Other amount' : 'Egyéb összeg' ?></label>
+            <label class="amount-label" for="custom_huf"><?php echo $isEnLang ? 'Other amount' : 'Egyéb összeg' ?></label>
         </div>
 
         <div id="custom_input">
@@ -149,141 +148,140 @@ get_header();
         <input type="checkbox" id="aszf" required />
         <label for="aszf">
             <?php if ($isEnLang) { ?>
-            I've read and understand the <a href="https://juharos.hu/alapitvany/?page_id=7346">donation requirements</a>
-            and the <a href="https://juharos.hu/alapitvany/?page_id=6587">privacy policy</a>.</label>
-        <?php } else { ?>
+                I've read and understand the <a href="https://juharos.hu/alapitvany/?page_id=7346">donation requirements</a>
+                and the <a href="https://juharos.hu/alapitvany/?page_id=6587">privacy policy</a>.</label>
+    <?php } else { ?>
         Az <a href="https://juharos.hu/alapitvany/?page_id=7346">adományozási feltételeket</a> és a
         <a href="https://juharos.hu/alapitvany/?page_id=6587">adatvédelmi nyilatkozatot</a>
         megértettem és elfogadom.</label>
-        <?php } ?>
-        <input type="hidden" name="donate" value="yes" />
-        </br>
-        <input type="submit" />
+    <?php } ?>
+    <input type="hidden" name="donate" value="yes" />
+    </br>
+    <input type="submit" />
     </form>
     <div id="barion-banner">
         <img src="<?php echo get_template_directory_uri() . '/_images/barion.png'  ?>" alt="barion_banner" />
     </div>
 </div>
-<div><?php the_content(); ?></div>
 
 
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/page-templates/donation-template.js">
 </script>
 
 <style>
-#donation-form input[type=text],
-#donation-form input[type=number],
-#donation-form input[type=email] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+    #donation-form input[type=text],
+    #donation-form input[type=number],
+    #donation-form input[type=email] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-#donation-form #name {
-    margin-top: 20px;
-}
+    #donation-form #name {
+        margin-top: 20px;
+    }
 
-#donation-form #custom_input {
-    display: none;
-    margin-top: 10px;
-    justify-content: flex-end;
-    margin-right: 20px;
-}
+    #donation-form #custom_input {
+        display: none;
+        margin-top: 10px;
+        justify-content: flex-end;
+        margin-right: 20px;
+    }
 
-#donation-form #custom_input input {
-    width: 30%;
-    font-size: 16px;
-}
+    #donation-form #custom_input input {
+        width: 30%;
+        font-size: 16px;
+    }
 
-#donation-form #custom_input::after {
-    position: absolute;
-    padding: 20px;
-    margin-right: 20px;
-    content: 'Ft';
-}
+    #donation-form #custom_input::after {
+        position: absolute;
+        padding: 20px;
+        margin-right: 20px;
+        content: 'Ft';
+    }
 
-#donation-form #name div {
-    width: 45%;
-    display: inline-block;
-}
+    #donation-form #name div {
+        width: 45%;
+        display: inline-block;
+    }
 
-#donation-form input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    #donation-form input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-#donation-form input[type=submit]:hover {
-    background-color: #45a049;
-}
+    #donation-form input[type=submit]:hover {
+        background-color: #45a049;
+    }
 
-#barion-banner {
-    display: flex;
-    justify-content: center;
-}
+    #barion-banner {
+        display: flex;
+        justify-content: center;
+    }
 
-input[type=radio] {
-    display: none;
-}
+    input[type=radio] {
+        display: none;
+    }
 
-input[type=radio]:not(:disabled)~label {
-    cursor: pointer;
-}
+    input[type=radio]:not(:disabled)~label {
+        cursor: pointer;
+    }
 
-#amount {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 15px;
-}
+    #amount {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 15px;
+    }
 
-.amount-label {
-    height: 100%;
-    display: block;
-    background: white;
-    border: 2px solid #20df80;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    margin: 0 12px;
-    font-size: 16px;
-    box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
-    position: relative;
-}
+    .amount-label {
+        height: 100%;
+        display: block;
+        background: white;
+        border: 2px solid #20df80;
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        margin: 0 12px;
+        font-size: 16px;
+        box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
+        position: relative;
+    }
 
-input[type=radio]:checked+label {
-    background: #e31938;
-    color: white;
-    box-shadow: 0px 0px 20px rgba(0, 255, 128, 0.75);
-}
+    input[type=radio]:checked+label {
+        background: #e31938;
+        color: white;
+        box-shadow: 0px 0px 20px rgba(0, 255, 128, 0.75);
+    }
 
-input[type=radio]:checked+label::after {
-    color: #3d3f43;
-    border: 2px solid #e31938;
-    content: "🐕";
-    font-size: 20px;
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    background: white;
-    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
-}
+    input[type=radio]:checked+label::after {
+        color: #3d3f43;
+        border: 2px solid #e31938;
+        content: "🐕";
+        font-size: 20px;
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
+    }
 </style>
 
 <?php get_footer(); ?>
